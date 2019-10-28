@@ -179,4 +179,11 @@ class MacroTest extends TestCase
         $this->assertEquals($items, $paginatorData['data']);
         $this->assertEquals($nextItem, $paginatorData['next_item']);
     }
+
+    /** @test */
+    public function paginator_next_page_contains_null_for_single_item()
+    {
+        $paginatorData = Reply::where('id', 1)->orderBy('id')->cursorPaginate(3)->toArray();
+        $this->assertNull($paginatorData['next_page']);
+    }
 }

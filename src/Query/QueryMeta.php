@@ -59,7 +59,11 @@ class QueryMeta
         if (!$itemsLast) {
             return null;
         }
-        
+
+        if ($this->modelsEqual($meta->first, $meta->last)) {
+            return null;
+        }
+
         return Cursor::beforeInclusive($this->targetsManager->targetFromItem($itemsLast));
     }
 
@@ -115,7 +119,7 @@ class QueryMeta
         return (object) [
             'total' => (int)$count,
             'first' => $firstAndLast->first(),
-            'last' => $firstAndLast->count() > 1 ? $firstAndLast->last() : null
+            'last' => $firstAndLast->last(),
         ];
     }
 }
