@@ -166,7 +166,7 @@ class Cursor implements JsonSerializable, Jsonable, Arrayable
                 case $this->beforeDirection():
                 case $this->beforeInclusiveDirection():
                     $nextItem = $items->first();
-                    $currentItems = $items->slice(1);
+                    $currentItems = $items->splice(1);
                     break;
                 case $this->afterDirection():
                 case $this->afterInclusiveDirection():

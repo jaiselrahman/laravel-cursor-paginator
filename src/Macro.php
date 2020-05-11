@@ -18,7 +18,7 @@ class Macro
 
     public function process($query)
     {
-        list($currentItems, $nextItem) = $this->resolveQuery($query);
+        [$currentItems, $nextItem] = $this->resolveQuery($query);
         $meta = $this->meta($query, $currentItems, $nextItem);
 
         return new CursorPaginator($currentItems, $this->perPage, $meta);
